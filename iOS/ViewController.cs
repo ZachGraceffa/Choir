@@ -10,15 +10,11 @@ namespace Choir.iOS
 	{
 		ChoirCBCentralManagerDelegate del;
 		CBCentralManager manager;
-		CBPeripheralManager peripheral;
-		ChoirCBPeripheralManagerDelegate peripheralManagerDelegate;
 
 		public ViewController (IntPtr handle) : base (handle)
 		{
 			del = new ChoirCBCentralManagerDelegate();
 			manager = new CBCentralManager (del, DispatchQueue.CurrentQueue);
-			peripheralManagerDelegate = new ChoirCBPeripheralManagerDelegate ();
-			peripheral = new CBPeripheralManager (peripheralManagerDelegate, DispatchQueue.CurrentQueue);
 		}
 
 
@@ -36,20 +32,17 @@ namespace Choir.iOS
 				del.ScanForBroadcasters(manager, Scanner);
 			};
 
-			if (peripheral.Advertising)
-				Console.WriteLine ("Advertising");
-
-			//manager.ConnectedPeripheral += (s, e) => {
-			//	var activePeripheral = e.Peripheral;
-			//	System.Console.WriteLine ("Connected to " + activePeripheral.Name);
+			manager.ConnectedPeripheral += (s, e) => {
+				var activePeripheral = e.Peripheral;
+				System.Console.WriteLine ("Connected to " + activePeripheral.Name);
 
 
-			//	if (activePeripheral.Delegate == null) {
-			//		activePeripheral.Delegate = new ChoirCBCentralPeripheralDelegate ();
+				if (activePeripheral.Delegate == null) {
+					activePeripheral.Delegate = new ChoirCBCentralPeripheralDelegate ();
 					//Begins asynchronous discovery of services
-			//		activePeripheral.DiscoverServices ();
-			//	}
-			//};
+					activePeripheral.DiscoverServices ();
+				}
+			};
 
 			//Connect to peripheral, triggering call to ConnectedPeripheral event handled above 
 			//mgr.ConnectPeripheral (myPeripheral);

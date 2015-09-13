@@ -1,10 +1,8 @@
 ﻿using System;
-using CoreBluetooth;
-using Foundation;
 
 namespace Choir.iOS
 {
-	public class ChoirCBPeripheralDelegate : CBPeripheralDelegate
+	public class ChoirCBCentralPeripheralDelegate : CBPeripheralDelegate
 	{
 		public override void DiscoveredService (CBPeripheral peripheral, NSError error)
 		{
