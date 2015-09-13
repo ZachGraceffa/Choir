@@ -31,6 +31,21 @@ namespace Choir.iOS
 			Scanner.TouchUpInside += delegate {
 				del.ScanForBroadcasters(manager, Scanner);
 			};
+
+			manager.ConnectedPeripheral += (s, e) => {
+				var activePeripheral = e.Peripheral;
+				System.Console.WriteLine ("Connected to " + activePeripheral.Name);
+
+
+				if (activePeripheral.Delegate == null) {
+					activePeripheral.Delegate = new ChoirCBCentralPeripheralDelegate ();
+					//Begins asynchronous discovery of services
+					activePeripheral.DiscoverServices ();
+				}
+			};
+
+			//Connect to peripheral, triggering call to ConnectedPeripheral event handled above 
+			//mgr.ConnectPeripheral (myPeripheral);
 		}
 
 		public override void DidReceiveMemoryWarning ()

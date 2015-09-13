@@ -111,6 +111,7 @@
       <DependentUpon>ViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Bluetooth\ChoirCBCentralManagerDelegate.cs" />
+    <Compile Include="Bluetooth\ChoirCBCentralPeripheralDelegate.cs" />
   </ItemGroup>
   <Import Project="..\Choir\Choir.projitems" Label="Shared" Condition="Exists('..\Choir\Choir.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

@@ -44,16 +44,18 @@ namespace Choir.iOS
 
 		public void ScanForBroadcasters(CBCentralManager mgr, UIButton Scanner)
 		{
+			
 			//Passing in null scans for all peripherals. Peripherals can be targeted by using CBUIIDs
 			mgr.ScanForPeripherals (cbuuids); //Initiates async calls of DiscoveredPeripheral
 		
+			Scanner.SetTitle("Started scan Scan", UIControlState.Normal);
 			//Timeout after 30 seconds
 			var timer = new Timer (30 * 1000);
 			timer.Elapsed += (sender, e) => {
 				Console.WriteLine("Stopping scan");
 				mgr.StopScan ();
 				Console.WriteLine("Scan stopped");
-				Scanner.Title = "Stopped Scan";
+				Scanner.SetTitle("Stopped Scan", UIControlState.Normal);
 			};
 		}
 	}
