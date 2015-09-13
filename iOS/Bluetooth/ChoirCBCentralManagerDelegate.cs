@@ -51,6 +51,9 @@ namespace Choir.iOS
 			Scanner.SetTitle("Started scan Scan", UIControlState.Normal);
 			//Timeout after 30 seconds
 			var timer = new Timer (30 * 1000);
+
+			mgr.StopScan ();
+
 			timer.Elapsed += (sender, e) => {
 				Console.WriteLine("Stopping scan");
 				mgr.StopScan ();
