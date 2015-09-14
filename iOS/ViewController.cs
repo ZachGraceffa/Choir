@@ -8,6 +8,7 @@ namespace Choir.iOS
 {
 	public partial class ViewController : UIViewController
 	{
+		string deviceName = UIDevice.CurrentDevice.Name;
 		ChoirCBCentralManagerDelegate del;
 		CBCentralManager manager;
 		CBPeripheralManager peripheral;
@@ -35,6 +36,10 @@ namespace Choir.iOS
 			Scanner.TouchUpInside += delegate {
 				del.ScanForBroadcasters(manager, Scanner);
 			};
+
+			var options = new StartAdvertisingOptions ();
+
+			peripheral.StartAdvertising (options);
 
 			if (peripheral.Advertising)
 				Console.WriteLine ("Advertising");

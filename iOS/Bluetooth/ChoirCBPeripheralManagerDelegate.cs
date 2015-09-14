@@ -4,13 +4,13 @@ using Foundation;
 
 namespace Choir.iOS
 {
-	public class ChoirCBPeripheralManagerDelegate : ICBPeripheralManagerDelegate
+	public class ChoirCBPeripheralManagerDelegate : NSObject, ICBPeripheralManagerDelegate
 	{
-		public IntPtr Handle {
-			[Preserve]
-			get;
-			private set;
-		}
+		//public IntPtr Handle {
+		//	[Preserve]
+		//	get;
+		//	private set;
+		//}
 
 		public ChoirCBPeripheralManagerDelegate ()
 		{
@@ -23,10 +23,15 @@ namespace Choir.iOS
 			}
 		}
 
-		public void Dispose ()
+		public void AdvertisingStarted(CBPeripheralManager peripheral)
 		{
-			//TODO do something here
+			//TODO something here
 		}
+
+		//new public void Dispose ()
+		//{
+			//TODO do something here
+		//}
 	}
 }
 

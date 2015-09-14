@@ -61,6 +61,10 @@
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignProvision>6ea8af3c-65bd-4f7e-a2b6-d8b31ac696dd</CodesignProvision>
+    <MtouchExtraArgs>-v -v -v</MtouchExtraArgs>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <MtouchI18n>
+    </MtouchI18n>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

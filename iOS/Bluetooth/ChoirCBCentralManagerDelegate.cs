@@ -12,7 +12,7 @@ namespace Choir.iOS
 
 		override public void UpdatedState (CBCentralManager mgr)
 		{
-			Console.WriteLine ("OnCentralManagerUpdatedState()");
+			Console.WriteLine ("UpdatedState()");
 			string message = null;
 
 			switch (mgr.State) {
@@ -52,7 +52,7 @@ namespace Choir.iOS
 			//Timeout after 30 seconds
 			var timer = new Timer (30 * 1000);
 
-			mgr.StopScan ();
+			//mgr.StopScan ();
 
 			timer.Elapsed += (sender, e) => {
 				Console.WriteLine("Stopping scan");
